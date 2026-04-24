@@ -18,6 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Show runner public IP
+        run: |
+          echo "Runner IP:"
+          curl -s https://api.ipify.org
+          echo ""
+
+      - name: Test API via curl (debug)
+        run: |
+          echo "Testing API endpoint..."
+          curl -v --max-time 30 https://api.opsucht.net/auctions/active || true
+
       - name: Fetch & process auctions
         run: python scripts/process_auctions.py
 
