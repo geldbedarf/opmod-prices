@@ -1,5 +1,5 @@
 name: Update Prices
-
+# dummy change
 on:
   schedule:
     - cron: '*/5 * * * *'
